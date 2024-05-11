@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Close : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject mapObject;
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnClick()
     {
-        
+        mapObject.SetActive(false);
     }
 }

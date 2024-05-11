@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    //public static event Action loseSanity;
-
+   
     [SerializeField] private int speed;
     [SerializeField] private int sprintSpeed;
     [SerializeField] private float speedLimiter;
@@ -19,10 +19,13 @@ public class Movement : MonoBehaviour
     private GetInput myInput;  // Input that gives the player ( WASD Movement )
     private Rigidbody2D myRigid;
 
+    private SpriteRenderer myRenderer;
+
     void Start()
     {
         myInput = GetComponent<GetInput>();
         myRigid = GetComponent<Rigidbody2D>();
+        myRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -31,18 +34,33 @@ public class Movement : MonoBehaviour
         {
             Vector2 direction = transform.right * myInput.movement.x + transform.up * myInput.movement.y;
             myRigid.velocity = direction * speed * speedLimiter;
-            
+
+            if(myInput.movement.x < 0)
+            {
+                myRenderer.flipX = true;
+            }
+
+            if (myInput.movement.x > 0)
+            {
+                myRenderer.flipX = false;
+            }
+
         }
 
         if (isFrozen == false && myInput.isSprinting == true)
         {
             Vector2 direction = transform.right * myInput.movement.x + transform.up * myInput.movement.y;
             myRigid.velocity = direction * sprintSpeed * speedLimiter;
-        }
 
-        //if (Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    loseSanity?.Invoke();
-        //}
+            if (myInput.movement.x < 0)
+            {
+                myRenderer.flipX = true;
+            }
+
+            if (myInput.movement.x > 0)
+            {
+                myRenderer.flipX = false;
+            }
+        }
     }
 }
