@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public static event Action loseSanity;
+    //public static event Action loseSanity;
 
     [SerializeField] private int speed;
     [SerializeField] private int sprintSpeed;
@@ -40,9 +40,9 @@ public class Movement : MonoBehaviour
             myRigid.velocity = direction * sprintSpeed * speedLimiter;
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            loseSanity?.Invoke();
-        }
+        //if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    loseSanity?.Invoke();
+        //}
     }
 }

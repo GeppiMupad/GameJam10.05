@@ -16,7 +16,7 @@ public class Sanity : MonoBehaviour
         myImage.color = Color.cyan;
         myImageTwo.color = Color.cyan;
         Pills.getSanity += GetSanity;
-        Movement.loseSanity += LoseSanity;
+        Patrol.loseSanity += LoseSanity;
     }
 
 

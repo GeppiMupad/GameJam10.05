@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-
+    public static event Action loseSanity;
 
     [SerializeField] private float speed = 1f;
     [SerializeField] private int walkRange = 4;
@@ -51,43 +52,11 @@ public class Patrol : MonoBehaviour
     }
 
 
-
-    //private void MoveToPositionTwo()
-    //{
-    //    if (arrivedOne == false)
-    //    {
-    //        arrivedTwo = true;
-    //        if (transform.position != positionA[0].transform.position)
-    //        {
-    //            transform.position = Vector3.MoveTowards(transform.position, positionA[0].transform.position, 10f);
-    //        }
-
-    //        if (transform.position == positionA[0].transform.position)
-    //        {
-    //            arrivedOne = true;
-    //        }
-    //    }
-
-
-    //    if (arrivedTwo == false)
-    //    {
-    //        if (transform.position != positionA[1].transform.position)
-    //        {
-    //            transform.position = Vector3.MoveTowards(transform.position, positionA[1].transform.position, 5f);
-    //        }
-
-    //        if (transform.position == positionA[1].transform.position)
-    //        {
-    //            arrivedOne = false;
-    //        }
-
-    //    }
-
-    //    arrivedTwo = false;
-    //}
-
-    //private IEnumerator WaitSeconds()
-    //{
-
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            loseSanity?.Invoke();
+        }
+    }
 }
