@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private int speed;
     [SerializeField] private int sprintSpeed;
+    [SerializeField] private float speedLimiter;
 
 
     public static bool isFrozen = false;
@@ -24,21 +25,20 @@ public class Movement : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
     }
 
-    
-    void Update()
+    private void Update()
     {
         if(isFrozen == false && myInput.isSprinting == false)
         {
             Vector2 direction = transform.right * myInput.movement.x + transform.up * myInput.movement.y;
-            myRigid.velocity = Time.deltaTime * (direction * speed);
+            myRigid.velocity = direction * speed * speedLimiter;
+            
         }
 
         if (isFrozen == false && myInput.isSprinting == true)
         {
             Vector2 direction = transform.right * myInput.movement.x + transform.up * myInput.movement.y;
-            myRigid.velocity = Time.deltaTime * (direction * sprintSpeed);
+            myRigid.velocity = direction * sprintSpeed * speedLimiter;
         }
-
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {

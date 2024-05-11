@@ -19,6 +19,7 @@ public class Questions : MonoBehaviour
     }
     public void OnQuestionThree()
     {
+        
         Answers.buttonIndex = 3;
         StartConversation.closeQuestions = true;
     }

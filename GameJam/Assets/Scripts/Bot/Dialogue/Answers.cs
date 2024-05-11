@@ -18,7 +18,6 @@ public class Answers : MonoBehaviour
     [SerializeField] private TextMeshProUGUI myText;   // the text that prints the answers;
     [SerializeField] private int letterPerSeconds; // how fast is the Text animations
 
-
     public static int buttonIndex = 0; // index which button ( question ) got pressed
 
 
@@ -27,6 +26,7 @@ public class Answers : MonoBehaviour
     private bool sayLastLine = false;
 
 
+    //[SerializeField] private ItemContainer myContiner;
 
     void Start()
     {
@@ -69,7 +69,6 @@ public class Answers : MonoBehaviour
             StartCoroutine(Dialogue(lastText));
         }
     }
-
 
     private void CloseContinue()
     {
