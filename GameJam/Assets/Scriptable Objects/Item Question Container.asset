@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28c85565ff8317469e8fe495a4c29a8, type: 3}
   m_Name: Item Question Container
   m_EditorClassIdentifier: 
-  itemOne: 1
+  itemOne: 0
   itemTwo: 0
   itemThree: 0
+  itemFour: 0
+  itemFive: 0

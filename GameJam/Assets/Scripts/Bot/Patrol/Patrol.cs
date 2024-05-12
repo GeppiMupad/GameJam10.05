@@ -29,7 +29,7 @@ public class Patrol : MonoBehaviour
     {
         if(arrivedOne == false)
         {
-            transform.Translate(Vector3.up * speed);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
 
             if (transform.position.y >= right)
             {
@@ -40,7 +40,7 @@ public class Patrol : MonoBehaviour
         
         if(arrivedTwo == false)
         {
-            transform.Translate(Vector3.down * speed);
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
 
             if (transform.position.y <= left)
             {
