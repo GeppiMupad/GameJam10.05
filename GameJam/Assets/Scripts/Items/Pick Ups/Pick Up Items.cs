@@ -18,6 +18,7 @@ public class PickUpItems : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 showObject.SetActive(true);
+                closedasscheiﬂscripts.open = true;
                 Movement.isFrozen = true;
             }
 

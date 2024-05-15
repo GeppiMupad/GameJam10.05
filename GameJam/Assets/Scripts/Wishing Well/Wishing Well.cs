@@ -14,6 +14,8 @@ public class WishingWell : MonoBehaviour
     [SerializeField] private TextMeshProUGUI myText;   // the text that prints the answers;
     [SerializeField] private int letterPerSeconds; // how fast is the Text animations
 
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject spawnPosition;
 
     [SerializeField] private ItemContainer myContainer;
 
@@ -34,7 +36,7 @@ public class WishingWell : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E)  && myContainer.itemThree == true && canTalk == true)
         {
-            SceneManager.LoadScene("Sewerage");
+            playerObject.transform.position = spawnPosition.transform.position;
         }
     }
 

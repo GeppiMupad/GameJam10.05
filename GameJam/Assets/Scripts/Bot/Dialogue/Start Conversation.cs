@@ -19,6 +19,10 @@ public class StartConversation : MonoBehaviour
     private bool thisBot = false;   // Seperates the bots canvas from the other ones 
 
 
+    public void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
@@ -98,6 +102,18 @@ public class StartConversation : MonoBehaviour
         if (questionIndex == 3)
         {
             if (myScriptable.itemThree == true)
+            {
+                childObject.SetActive(true);
+            }
+            else
+            {
+                childObject.SetActive(false);
+            }
+        }
+
+        if (questionIndex == 4)
+        {
+            if (myScriptable.itemFour == true)
             {
                 childObject.SetActive(true);
             }

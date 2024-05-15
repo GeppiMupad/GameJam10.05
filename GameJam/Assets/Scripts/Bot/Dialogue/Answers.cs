@@ -72,7 +72,7 @@ public class Answers : MonoBehaviour
 
     private void CloseContinue()
     {
-        continueObject.SetActive(false);
+        continueObject.SetActive(false); // das wird destroyd ( warum )
     }
 
     public IEnumerator Dialogue(string dialogue)

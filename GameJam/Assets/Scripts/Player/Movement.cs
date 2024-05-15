@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+
+
         if(isFrozen == false && myInput.isSprinting == false)
         {
             Vector2 direction = transform.right * myInput.movement.x + transform.up * myInput.movement.y;
@@ -61,6 +63,17 @@ public class Movement : MonoBehaviour
             {
                 myRenderer.flipX = false;
             }
+        }
+
+        if (isFrozen == true)
+        {
+            myRigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+
+        if (isFrozen == false)
+        {
+            myRigid.constraints = RigidbodyConstraints2D.None;
+            myRigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }

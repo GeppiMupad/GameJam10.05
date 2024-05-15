@@ -12,7 +12,8 @@ public class ClosePickUp : MonoBehaviour
     public void OnClick()
     {
         canvasObject.SetActive(false);
-        Destroy(destroyObject);
+        closedasscheiﬂscripts.canClose = true;
+      //  Destroy(destroyObject);
         Movement.isFrozen = false;
     }
 }

@@ -7,6 +7,6 @@ public class Play : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Town Square 1");
     }
 }

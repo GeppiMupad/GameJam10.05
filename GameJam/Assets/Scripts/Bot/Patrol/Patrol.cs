@@ -11,6 +11,8 @@ public class Patrol : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private int walkRange = 4;
 
+    [SerializeField] private int idex = 0;
+
     private float right;
     private float left;
 
@@ -18,36 +20,82 @@ public class Patrol : MonoBehaviour
 
     private bool arrivedTwo = true;
 
+    private SpriteRenderer mySprite;
+
     void Start()
     {
-        right = transform.position.y;
-        left = transform.position.y - walkRange;
+        mySprite = GetComponent<SpriteRenderer>();
+
+        if(idex == 0)
+        {
+            right = transform.position.y;
+            left = transform.position.y - walkRange;
+        }
+
+        if(idex == 1)
+        {
+            right = transform.position.x;
+            left = transform.position.x - walkRange;
+        }
+        
     }
 
 
     private void Update()
     {
-        if(arrivedOne == false)
+        if(idex == 0)
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-
-            if (transform.position.y >= right)
+            if (arrivedOne == false)
             {
-                arrivedOne = true;
-                arrivedTwo = false;
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
+               
+                if (transform.position.y >= right)
+                {
+                    arrivedOne = true;
+                    arrivedTwo = false;
+                }
+            }
+
+            if (arrivedTwo == false)
+            {
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+                
+                if (transform.position.y <= left)
+                {
+                    arrivedOne = false;
+                    arrivedTwo = true;
+                }
             }
         }
-        
-        if(arrivedTwo == false)
-        {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
 
-            if (transform.position.y <= left)
+
+        if (idex == 1)
+        {
+            if (arrivedOne == false)
             {
-                arrivedOne = false;
-                arrivedTwo = true;
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
+                mySprite.flipX = false;
+
+                if (transform.position.x <= left)
+                {
+                    arrivedOne = true;
+                    arrivedTwo = false;
+                }
+            }
+
+            if (arrivedTwo == false)
+            {
+                transform.Translate(Vector3.right * speed * Time.deltaTime);
+                mySprite.flipX = true;
+
+                if (transform.position.x >= right)
+                {
+                    arrivedOne = false;
+                    arrivedTwo = true;
+                }
             }
         }
+
 
     }
 
